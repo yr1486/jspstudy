@@ -22,6 +22,15 @@ public class GetServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		
+		
+		/*
+		 	요청
+		 	1. 클라이언트 -> 서버로 보내는 것이 요청(Request)이다.
+		 	2. HttpServletRequest 클래스가 요청을 처리한다.
+		 	3. 요청에 포함된 파라미터(Parameter)는 String 타입으로 처리한다. 100% 스트링으로 온다.
+		 */
+		
 		// 요청 정보를 UTF-8로 인코딩한다.
 		request.setCharacterEncoding("UTF-8");
 		
