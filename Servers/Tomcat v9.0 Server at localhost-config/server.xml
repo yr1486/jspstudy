@@ -15,10 +15,13 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 --><!-- Note:  A "Server" is not itself a "Container", so you may not
-     define subcomponents such as "Valves" at this level.
+     define subcomponents such as "Valves" at thiss level.
      Documentation at /docs/config/server.html
  --><Server port="8006" shutdown="SHUTDOWN">
+ 
  <!--  원래 Server port="8005"인데 자꾸 내컴퓨터에 8005를 누가 쓰고 있다는 오류로 톰캣 실행이 되지 않아서. 쌤이 8006으로 바꿔줌....나만 다름... 알고 있기. -->
+ <!--  servers파일을 이클립스에서는 원본파일이 아닌 복사본을 쓰기 때문에 포트번호를 바꿔도 원본에는 적용 되지 않고, 서로 바꿔도 영향을 주지 않음. 참고하기.-->
+  
   <Listener className="org.apache.catalina.startup.VersionLoggerListener"/>
   <!-- Security listener. Documentation at /docs/config/listeners.html
   <Listener className="org.apache.catalina.security.SecurityListener" />
@@ -153,7 +156,8 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="01_Servlet" path="/01_Servlet" reloadable="true" source="org.eclipse.jst.jee.server:01_Servlet"/></Host>
+      <Context docBase="01_Servlet" path="/01_Servlet" reloadable="true" source="org.eclipse.jst.jee.server:01_Servlet"/><Context docBase="Test" path="/Test" reloadable="true" source="org.eclipse.jst.jee.server:Test"/></Host>
+      <!-- 								contextPath라고 부른다. 얘는 슬래시로 시작하는거 잊지말기. -->
     </Engine>
   </Service>
 </Server>
