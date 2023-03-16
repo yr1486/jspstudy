@@ -31,15 +31,16 @@ public class GetServlet extends HttpServlet {
 		 	3. 요청에 포함된 파라미터(Parameter)는 String 타입으로 처리한다. 100% 스트링으로 온다.
 		 */
 		
-		// 요청 정보를 UTF-8로 인코딩한다.
+		// 요청 정보를 UTF-8로 인코딩한다. 
+		// 모든 서블릿이 우선 해야하는 일. 한글을 일단 인코딩 해줘야하니까.
 		request.setCharacterEncoding("UTF-8");
 		
-		// 요청 파라미터를 꺼낸다. 리퀘스트에 들어있다.
+		// 요청 파라미터를 꺼낸다. 리퀘스트에 들어있다. 리퀘스트를 통해서 파라미터를 꺼내고.
 		String model = request.getParameter("model");
 		String strPrice = request.getParameter("price");
 		
 		// 모든 파라미터의 타입은 스트링이다.
-		// 요청 파라미터에 null 처리를 한다.
+		// 요청 파라미터에 null 처리를 한다. . 숫자로 바꾸는 과정을 처리해줘야 한다.
 		int price = 0;
 		if(strPrice != null) { // 널이 아니면 할게.
 			price = Integer.parseInt(strPrice); // "200" -> 200

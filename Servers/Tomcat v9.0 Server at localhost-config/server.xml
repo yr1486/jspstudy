@@ -156,7 +156,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="01_Servlet" path="/01_Servlet" reloadable="true" source="org.eclipse.jst.jee.server:01_Servlet"/><Context docBase="Test" path="/Test" reloadable="true" source="org.eclipse.jst.jee.server:Test"/></Host>
+      <Context docBase="01_Servlet" path="/01_Servlet" reloadable="true" source="org.eclipse.jst.jee.server:01_Servlet"/></Host>
       <!-- 								contextPath라고 부른다. 얘는 슬래시로 시작하는거 잊지말기. -->
     </Engine>
   </Service>
