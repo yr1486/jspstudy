@@ -17,11 +17,6 @@ public class ResponseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public ResponseServlet() {
-        super();
-
-    }
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// 1. 요청 파라미터 처리하기

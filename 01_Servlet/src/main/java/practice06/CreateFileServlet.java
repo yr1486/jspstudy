@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.time.LocalDate;
 
 import javax.servlet.ServletException;
@@ -32,9 +33,10 @@ public class CreateFileServlet extends HttpServlet {
 		
 		String writer = request.getParameter("writer");
 		String title = request.getParameter("title");
-		String content = request.getParameter("content");
-					
-		String filename = LocalDate.now().toString() + "-" + writer + "-" + title + title + ".txt";
+		String content = request.getParameter("content");	
+		
+		
+		String filename = LocalDate.now().toString() + "-" + writer + "-" + title + ".txt";
 		File dir = new File(request.getServletContext().getRealPath("storage"));
 		// 리얼패스에 들어가있는거. 스토리지에 들어가있음!!!!! 프랙티스6이 아니라.
 		
@@ -44,20 +46,18 @@ public class CreateFileServlet extends HttpServlet {
 		
 		File file = new File(dir, filename);
 		BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-		
 		bw.write(content);
 		bw.flush();
 		bw.close();
 		
+		
 		/*
-		 	2. ResponseServlet으로 리다이렉트
-		 		파일명 전달
-		 */
-		
-		
-		//response.sendRedirect("/01_Servlet/FileResponseServlet?filename" + URLEncoder.encoder());
-	}
+		2. FileResponseServlet으로 리다이렉트
+			파일명 전달
+	*/
+	response.sendRedirect("/01_Servlet/FileResponseServlet?filename=" + URLEncoder.encode(filename, "UTF-8"));
 
+}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

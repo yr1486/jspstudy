@@ -20,7 +20,7 @@ public class RedirectServlet2 extends HttpServlet {
 		
 	// 리다이렉트 이후 ( 두번째 요청) 파라미터 확인
 	
-		String model = request.getParameter("model"); // 두번째 요청에 model이 없기 때문에 null 값이 저장된다
+		String model = request.getParameter("model");  // 두 번째 요청에 파라미터 model이 없기 때문에 null 값이 저장된다.
 		System.out.println("RedirectServlet2 : " + model);
 		
 		

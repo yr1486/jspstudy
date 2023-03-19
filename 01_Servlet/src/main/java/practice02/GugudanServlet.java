@@ -32,15 +32,14 @@ public class GugudanServlet extends HttpServlet {
 		
 		if(strDan != null && strDan.isEmpty() == false) {
 			dan = Integer.parseInt(strDan);
-			
 		}
 		if(strNum != null && strNum.isEmpty() == false) {
 			num = Integer.parseInt(strNum);
 		}
 		if(strResult != null && strResult.isEmpty() == false) {
 			result = Integer.parseInt(strResult);
-			
 		}
+		
 		
 		// 응답의 타입
 		response.setContentType("text/html; charset=UTF-8");
@@ -50,19 +49,19 @@ public class GugudanServlet extends HttpServlet {
 		
 		// 응답하기
 		out.println("<script>");
-		if(dan * num == result) { // 정답일때
+		if(dan * num == result) {
 			out.println("alert('정답입니다.')");
+		} else {
+			out.println("alert('오답입니다.')");
 		}
-		else {
-			out.println("alert('오답입니다.')");			
-		}
-		// out.println("history.back()" 이전 화면으로 이동하기
-		// out.println("location.href='/01_Servlet/practice02/client1.html'"); // client1.html로 이동하기
-		out.println("location.href='/01_Servlet/practice02/client2.html'"); // client2.html로 이동하기
+		
+		// out.println("history.back()");  이전 화면으로 이동하기
+		// out.println("location.href='/01_Servlet/practice02/client1.html'");  // client1.html로 이동하기
+		out.println("location.href='/01_Servlet/practice02/client2.html'");  // client2.html로 이동하기
 		out.println("</script>");
 		out.flush();
 		out.close();
-		
+	
 	}
 
 

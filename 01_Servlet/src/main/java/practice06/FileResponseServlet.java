@@ -26,14 +26,13 @@ public class FileResponseServlet extends HttpServlet {
 		 */
 		
 		request.setCharacterEncoding("UTF-8");
-		
 		String filename = request.getParameter("filename");
 		
-		response.setContentType("text/html; chartset=UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
-		out.println("alert('" + filename + " 파일이 생성되었습니다.')");		
-		out.println("location.href='/01_Servlet/practice06/client.html'");
+		out.println("alert('" + filename + "  파일이 생성되었습니다.');");
+		out.println("location.href='/01_Servlet/practice06/client.html';");
 		out.println("</script>");
 		out.flush();
 		out.close();

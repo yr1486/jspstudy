@@ -25,7 +25,7 @@ public class Practice05_2 extends HttpServlet {
 		String model = request.getParameter("model"); // 두번째 요청에 model이 없기 때문에 null 값이 저장된다
 		System.out.println("Practice05_2 : " + model);
 		
-		System.out.println(request.getServletContext().getRealPath("Practice05_2")); //컨택스트 = 프로젝트 임!!!! 
+		//System.out.println(request.getServletContext().getRealPath("Practice05_2")); //컨택스트 = 프로젝트 임!!!! 
 	}
 
 

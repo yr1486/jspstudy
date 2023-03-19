@@ -19,29 +19,26 @@
 	<!-- 서버 경로 작성하는 방법 -->
 	<ul>
 		<li><a href="http://localhost:9090/01_Servlet/GetServlet">정상이동</a></li>
-		<li><a href="/01_Servlet/GetServlet">정상이동 (추천)</a></li>
+		<li><a href="/01_Servlet/GetServlet">정상이동(추천)</a></li>
 		<li><a href="01_Servlet/GetServlet">불량링크(ContextPath는 슬래시로 시작해야 한다.)</a></li>
-		<li><a href="/GetServlet">불량링크(슬래시로 시작하면 ContextPath 인 줄 안다.)</a></li>
-		<li><a href="GetServlet">불량링크(URLMapping으로 인식하지만 HTML 파일의 경로에 따라 실행 여부가 달라진다 .)</a></li>
+		<li><a href="/GetServlet">불량링크(슬래시로 시작하면 ContextPath인 줄 안다.)</a></li>
+		<li><a href="GetServlet">불량링크(URLMapping으로 인식하지만 HTML 파일의 경로에 따라 실행 여부가 달라진다.)</a></li>
 	</ul>
 
 	<!-- <a> 태그로 파라미터 보내기 -->
 	<div>
-		<a href="/01_Servlet/GetServlet?model=냉장고$price=200">파라미터전송</a>
-		<!-- 	  프로젝트     서블릿 -->
+		<a href="/01_Servlet/GetServlet?model=냉장고&price=200">파라미터전송</a>
 	</div>
 	
 	
 	<!--  <form> 태그로 submit하기(파라미터 보내기)-->
 	
 	<div>
-		<form action = "/01_Servlet/GetServlet">
+		<form action="/01_Servlet/GetServlet">
 			<label for="model">모델명</label>
 			<input type="text" id="model" name="model" placeholder="모델명">
-			
 			<label for="price">가격</label>
 			<input type="text" id="price" name="price" placeholder="가격(원)">
-			
 			<button type="submit">파라미터전송</button>
 			<!--  네임을 써야 파라미터가 인식할 수 있다.-->
 			<!--  폼 외부에 인풋이 있다면 전송되지 않음 폼 태그 안에 꼭 넣어주기. -->
@@ -49,6 +46,7 @@
 
 		</form>
 	</div>
+	
 	
 	<!-- location.href 또는 open() 을 이용해서 파라미터 보내보기-->
 	<div>
@@ -77,16 +75,15 @@
 			<div>
 				<input type="checkbox" name="hobbies" value="travel" id="travel">
 				<label for="travel">여행</label>
-				
 				<input type="checkbox" name="hobbies" value="swim" id="swim">
 				<label for="swim">수영</label>
-				
-				<input type="checkbox" name="golf" value="golf" id="golf">
+				<input type="checkbox" name="hobbies" value="golf" id="golf">
 				<label for="golf">골프</label>
 			</div>
-				<button>배열 전송</button>
+			<button>배열전송</button>
 		</form>
 	</div>
+	
 	<!-- 
 	네임이 똑같은게 여러개 있는데 배열이 아닌거 : gender 선택을 하나 밖에 못하니까 구조적으로 배열이 될 수 없음.
 	
@@ -94,15 +91,13 @@
 		1. <form> 태그를 이용한 submit
 		2. $.ajax({})을 이용한 비동기 처리 요청
 	 -->
-	 <div>
-	 	<form method="POST" action="/01_Servlet/PostServlet">
-	 	
-	 		<label for="model">모델명</label>
-	 		<input type="text" id="model" name="model">
-	 		
-	 		<label for="price">가격</label>
-	 		<input type="text" id="price" name="price">
-	 		<input type="submit" value="파라미터 전송">
+	<div>
+		<form method="POST" action="/01_Servlet/PostServlet">
+			<label for="model">모델명</label>
+			<input type="text" id="model" name="model">
+			<label for="price">가격</label>
+			<input type="text" id="price" name="price">
+			<input type="submit" value="파라미터전송">
 	 		
 	 		<!--  위에랑 아이디 값이 중복 되는데 알고 있기 원래 아이디는 중복된 값이 올 수 없음 -->
 	 		

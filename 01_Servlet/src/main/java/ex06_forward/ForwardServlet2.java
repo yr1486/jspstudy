@@ -18,7 +18,7 @@ public class ForwardServlet2 extends HttpServlet {
 
 		// 포워드 이후(두번째 요청) 파라미터 확인
 		String model = request.getParameter("model");
-		System.out.println("ForwardServlet2 : " + model);
+		System.out.println("ForwardServlet1 : " + model);
 		
 		//콘솔에 이렇게 찍히고
 		//forwardServlet1 : TV
@@ -28,6 +28,9 @@ public class ForwardServlet2 extends HttpServlet {
 		//http://localhost:9090/01_Servlet/forwardServlet1?model=TV
 		//forwardServlet1 이라고 찍힘
 		// 서버 안에서 이루어지기 때문에 포워드2로 이동했다는게 안보임. (자기들끼리 내선 돌려서)
+		
+		// 포워드(전달)
+		request.getRequestDispatcher("/ForwardServlet2").forward(request, response);
 			
 	}
 

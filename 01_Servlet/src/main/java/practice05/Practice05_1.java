@@ -20,6 +20,7 @@ public class Practice05_1 extends HttpServlet {
 
 		// 모델 냉장고를 콘솔에 찍기 - syso로 출력하고 Practice_2로 리다이렉트
 		
+		
 		// 요청 인코딩
 		request.setCharacterEncoding("UTF-8");
 		
@@ -28,7 +29,6 @@ public class Practice05_1 extends HttpServlet {
 		
 		// 응답할 URL의 인코딩이 필요하다.
 		response.sendRedirect("/01_Servlet/Practice05_2?model=" + URLEncoder.encode(model, "UTF-8"));
-		
 	}
 
 

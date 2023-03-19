@@ -34,7 +34,8 @@ public class PostServlet extends HttpServlet {
 			price = Integer.parseInt(strPrice);
 		}
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("model: " + model).append(", price: " + price);
+		
 	}
 
 

@@ -15,11 +15,6 @@ public class GetServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public GetServlet() {
-        super();
-    }
-
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		
@@ -43,8 +38,7 @@ public class GetServlet extends HttpServlet {
 		// 요청 파라미터에 null 처리를 한다. . 숫자로 바꾸는 과정을 처리해줘야 한다.
 		int price = 0;
 		if(strPrice != null) { // 널이 아니면 할게.
-			price = Integer.parseInt(strPrice); // "200" -> 200
-			
+			price = Integer.parseInt(strPrice);  // "200" -> 200
 		}
 		
 		response.getWriter().append("model: " + model).append(", price: " + price);
