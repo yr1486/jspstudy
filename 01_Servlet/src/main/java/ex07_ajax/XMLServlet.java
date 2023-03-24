@@ -32,14 +32,15 @@ public class XMLServlet extends HttpServlet {
 		if(strPrice != null && strPrice.isEmpty() == false) {
 			price = Integer.parseInt(strPrice);
 		}
-		//응답할 XML 만들기(JSONObject를 먼저 만든 뒤 XML로 변환
+		// 응답할 XML 만들기(JSONObject를 먼저 만든 뒤 XML로 변환)
 		/*
-		 	<book>
-			 	<title>제목</title>
-			 	<author>저자</author>
-			 	<price>가격</price>
-		 	</book>
-		 */
+			=== resData ===
+			<book>
+				<title>제목</title>
+				<author>저자</author>
+				<price>가격</price>
+			</book>
+		*/
 		JSONObject obj = new JSONObject();
 		obj.put("title", title);
 		obj.put("author", author);
@@ -48,12 +49,12 @@ public class XMLServlet extends HttpServlet {
 		obj2.put("book", obj);
 		
 		String resData = XML.toString(obj2); // toString에 오브젝트2 전달
-		System.out.println(resData);
+		//System.out.println(resData);
 		
-		//  응답 데이터 타입
+		// 응답 데이터 타입
 		response.setContentType("application/xml; charset=UTF-8");
 		
-		// 출력 스트림
+		// 출력 스트림 생성
 		PrintWriter out = response.getWriter();
 		
 		// 출력

@@ -14,9 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
-
 @WebServlet("/AirportServlet")
 
 public class AirportServlet extends HttpServlet {
@@ -69,7 +66,7 @@ public class AirportServlet extends HttpServlet {
 		StringBuilder sb = new StringBuilder();
 		String line = null;
 		while((line = reader.readLine()) != null) {
-			sb.append(line + "\n");
+			sb.append(line);
 		}
 		
 		// 사용한 자원 반납
@@ -84,6 +81,7 @@ public class AirportServlet extends HttpServlet {
 		out.close();
 	
 	}
+
 	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

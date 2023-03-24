@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="../resources/js/lib/jquery-3.6.4.min.js"></script>
+<!-- client success까지 만들고 -->
 </head>
 <body>
 	<div>
@@ -41,11 +42,11 @@
 	
 	<div>
 		<form id="frm_person">
-			<input type="text" name="name" placeholder="이름"	>
+			<input type="text" name="name" placeholder="이름">
 			<input type="text" name="age" placeholder="나이">
-			<input type="button" id="btn2" value="JSON요청"> 
+			<input type="button" id="btn2" value="JSON요청">
 		</form>
-			<div id="content2"></div>
+		<div id="content2"></div>
 	</div>
 	<script>
 		$('#btn2').on('click', function(){
@@ -56,17 +57,16 @@
 				url: '/01_Servlet/JSONServlet',
 				data: $('#frm_person').serialize(),	// form 내부의 모든 입력 요소(.name속성이 파라미터로 인식된다.) // 시리얼라이즈는 네임속성으로
 			
-				// 응답
+				/* 응답 */
 				dataType: 'json', // 스트링을 보냈지만 제이슨을 받는거다.                                                                
 				success: (resData)=>{ // resData == {"name": "마돈나", "age": 50}
-				$('#content2').append($('<div>').text(resData.name));
-				$('#content2').append($('<div>').text(resData.age)); // 마침표로 가지고 오거나 대괄호로 가지고 올 수 있음
+					$('#content2').append($('<div>').text(resData.name));
+					$('#content2').append($('<div>').text(resData.age)); // 마침표로 가지고 오거나 대괄호로 가지고 올 수 있음
 					
 				},
 				error: (jqXHR)=>{
 					$('#content2').append($('<div>').text(jqXHR.status));
 					$('#content2').append($('<div>').text(jqXHR.responseText));
-					
 				}
 			})
 		})
@@ -94,36 +94,15 @@
 				success: (resData)=>{ //여기까지하고 XML로 넘어가서
 					var ul = $('<ul>'); //제이쿼리 메소드 쓸수있게 묶어주기.
 					ul.append($('<li>').text('제목 : ' + $(resData).find('title').text()));
-					ul.append($('<li>').text('저자 : ' + $(resData).find('title').text()));
+					ul.append($('<li>').text('저자 : ' + $(resData).find('author').text()));
 					ul.append($('<li>').text('가격 : ' + $(resData).find('price').text() + '원'));
 					$('#content3').append(ul);
 				}
 				
 			})
 		})
+		
 	</script>
-
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 </body>
 </html>
