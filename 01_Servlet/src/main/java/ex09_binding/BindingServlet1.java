@@ -31,7 +31,8 @@ public class BindingServlet1 extends HttpServlet {
 		 			(1) HttpServletRequest : 하나의 요청 내에서 값을 저장할 수 있다. (1회용)
 		 			(2) HttpSession		   : 웹 브라우저 종료 전까지 값을 저장할 수 있다. (시간 지정 가능)
 		 			(3) ServletContext	   : 컨텍스트(프로젝트, 애플리케이션) 종료 전 까지 값을 저장할 수 있다.
-		 		4) 속성(Attribute 관련 메소드
+		 			
+		 		4) 속성(Attribute) 관련 메소드
 		 			(1) getAttribute('속성') 		: 값 가져오기 (캐스팅이 필요할 수 있다. 값을 저장할 때 오브젝트 타입으로 저장해서)
 		 			(2) setAttribute('속성', 값)	: 값 저장하기 (object 타입으로 저장한다. 오브젝트는 정수 실수 가지리않고 모두 다다다 저장할 수 있다) 그래서 꺼내 쓸때 캐스팅 필요. 형변환 필요 즉 오브젝트에 저장한건 캐스팅해서 쓴다.
 		 			(3) removeAttribute('속성')	: 값 제거하기
@@ -62,7 +63,7 @@ public class BindingServlet1 extends HttpServlet {
 		// 페이지 이동하기
 		// 서블릿에서 페이지 이동하는 방법은  2가지가 있음 // 1. redirect 2. forward  중요
 		
-		// 1. HttpServletRequest의 전달이 없는 이동 : redirect, <a href="">, location.href=""
+		// 1. HttpServletRequest의 전달이 없는 이동 : redirect, <a href="">, location.href=""ㄴ
 		//response.sendRedirect("/01_Servlet/BindingServlet2");
 		// 얘는 회사이름/부서이름 다적어줌.
 		

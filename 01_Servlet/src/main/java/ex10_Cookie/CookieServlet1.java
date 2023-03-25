@@ -23,8 +23,7 @@ public class CookieServlet1 extends HttpServlet {
 		 	Cookie
 		 	1. 서버가 만들어서 클라이언트가 저장한다. // response 처리 해줘야 함
 		 	2. 보안에 취약하다.
-
-
+			
 			쿠키 예시) 오늘더이상이창을열지않음 팝업창에 체크 // 로그인할때 아이디 기억에 체크 표시 서버에 저장되고 이런게아니라 쿠키에 저장된다.
 		 */
 		
@@ -35,18 +34,22 @@ public class CookieServlet1 extends HttpServlet {
 		Cookie cookie2 = new Cookie("address", URLEncoder.encode("서울시 금천구 가산동", "UTF-8")); // 띄어쓰기 세미콜론 등. 이렇게만 쓰면 오류남 // 유효하지 않은 문자(대표적으로 공백)는 UTF-8
 		Cookie cookie3 = new Cookie("job", URLEncoder.encode("요양 보호사", "UTF-8"));
 		
+		
 		// 쿠키가 저장될 경로 설정하기
-		cookie1.setPath("/01_Servlet"); 				 // 컨텍스트 패스 : request.getContextPath()
+		cookie1.setPath("/01_Servlet"); 				 // 컨텍스트패스 : request.getContextPath()  컨택스트패스의 경로를 가져오려면 리퀘스트.겟해가지고 가져오는거. 컨택스트패스는 경로. 컨택스트=프로젝트!! 지금의 컨택스트패스는 01_Servlet이 되고, 실행시키면 웹주소의 느낌표 부분이 되는 거. -> http://localhost:9090/!!!!!01_Servlet!!!!/CookieServlet3 
 		cookie2.setPath("/01_Servlet/CookieServlet1");   // 서블릿경로 request.getRequestURI()
+														 // cookie3은 경로 설정을 생략했으므로 컨텍스트패스에 저장된다.
 
-		// 주소가 달라지면 쿠키가 달라진다.
+		
+		// 주소가 달라지면 쿠키가 달라진다. 
 	
 		// 쿠키 유효시간 설정하기(생략하면 세션쿠키가 된다. : 브라우저를 닫을때까지 보관된다. 
 		// 쿠키 유효시간은 초당으로 설정하는 거
 		//	cookie1.setMaxAge(1); // 1초 
 			cookie1.setMaxAge(60 * 60 * 24 * 7); // 7일간 보관되는 쿠키
 			cookie2.setMaxAge(60 * 60); //10초 동안 보관되는 쿠키
-		
+										// cookie3은 유효기간 설정을 생략했으므로 세션쿠키가 된다.
+			
 		// 쿠키 저장하기(응답으로 처리해야 한다)
 		response.addCookie(cookie1);
 		response.addCookie(cookie2);
@@ -59,7 +62,7 @@ public class CookieServlet1 extends HttpServlet {
 		
 		
 		
-		// 쿠키 삭제
+		// 쿠키 삭제하는 방법
 		// 쿠키 유효시간을 0으로 덮어쓰기 하기. 저장되자마자 지워지게 됨
 		// 쿠키 삭제 코드가 별도로 있는게 아니다. 저장하는 코드 삭제하는 코드가 같음
 		// cookie1.setMaxAge(0); // 삭제
