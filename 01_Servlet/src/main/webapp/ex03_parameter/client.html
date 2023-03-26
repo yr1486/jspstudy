@@ -29,7 +29,7 @@
 	<div>
 		<a href="/01_Servlet/GetServlet?model=냉장고&price=200">파라미터전송</a>
 	</div>
-	
+	<hr>
 	
 	<!--  <form> 태그로 submit하기(파라미터 보내기)-->
 	
@@ -37,8 +37,10 @@
 		<form action="/01_Servlet/GetServlet">
 			<label for="model">모델명</label>
 			<input type="text" id="model" name="model" placeholder="모델명">
+			
 			<label for="price">가격</label>
 			<input type="text" id="price" name="price" placeholder="가격(원)">
+			
 			<button type="submit">파라미터전송</button>
 			<!--  네임을 써야 파라미터가 인식할 수 있다.-->
 			<!--  폼 외부에 인풋이 있다면 전송되지 않음 폼 태그 안에 꼭 넣어주기. -->
@@ -50,7 +52,7 @@
 	
 	<!-- location.href 또는 open() 을 이용해서 파라미터 보내보기-->
 	<div>
-		<button id="btn">파라미터전송</button>
+		<button id="btn">파라미터전송1</button>
 	</div>
 
 	<script>
