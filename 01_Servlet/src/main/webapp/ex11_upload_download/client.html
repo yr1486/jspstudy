@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../resources/js/lib/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+	<div>
+		<!-- 파일 첨부폼의 필수 속성 : method="post" enctype="multipart/form-data"  -->
+		<form id="frm_upload" action= "/01_Servlet/UploadServlet" method="post" enctype="multipart/form-data">
+			<div>
+				<label for="uploader">작성자</label>
+				<input type="text" id="uploader" name="uploader">
+			</div>
+			<div>
+				<label for="filename">파일첨부</label>
+				<input type="file" id="filename" name="filename">
+				<!-- name은 파라미터가 되는거. 아이디는 라벨과 연결 -->
+			</div>
+			<div>
+				<button>첨부하기</button>
+				<input type="reset" value="다시작성">
+				<!-- 연결? 하는건 jar파일에 도움을 받아서 할거임 -->
+			</div>
+		</form>
+	</div>
+	
+	<!-- 확장자 제한도 걸 수 있음. 프론트 단에서  -->
+	<script>
+		$("#filename").on('change', function(){
+		// change는 첨부파일을 바꿀 때 마다 이름이 바뀌는 기능
+		
+			// 확장자 제한하기
+			var filename = $(this).val(); // 첨부된 파일명
+			// 이벤트가 걸리는 상황에서는 this라고 부를 수 있다.
+			var extname = filename.substring(filename.lastIndexOf('.')+1).toLowerCase();
+			//       +1안하면 .부터 가져오니까 +1해준거임 // 여기까지 확장자분리하는 작업  //첨부된 파일 확장자(소문자로 변환)
+			var acceptList = ['jpg', 'jpeg', 'png', 'gif', 'tif']; // 허용할 확장자 목록을 이미지로 예시 들어 보자
+			
+			if($.inArray(extname, acceptList) == -1){ //inArray는 인덱스가 반환되는데 없으면 -1값을 반환함.
+				alert('이미지만 첨부할 수 있습니다.');
+				$(this).val(''); // 입력된 값을 지워버리는. 첨부를 지우는 거지. 첨부된 파일이 없어짐.
+				return;
+			
+			}	
+			// 파일 크기 제한하기
+			var filesize = this.files[0].size; //첨부된 파일 크기
+			var maxsize = 1024 * 1024 * 10;	 //최대크기(10MB)로 잡았음
+			if(filesize > maxsize){
+				alert('첨부파일의 최대 크기는 10MB입니다');
+				$(this).val('');
+				return;
+			}
+			
+		})
+	</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
