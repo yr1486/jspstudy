@@ -28,6 +28,7 @@
 			}
 		}
 	}
+
 %>
 	<%-- 널이면 == 로그인이 안됐다는 뜻 --%>
 	<% if(session.getAttribute("loginId") == null) { %> 

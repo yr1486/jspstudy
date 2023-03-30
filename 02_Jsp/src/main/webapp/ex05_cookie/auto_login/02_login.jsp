@@ -10,7 +10,7 @@
 
 	<%
 		request.setCharacterEncoding("UTF-8");
-	
+	 
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String chkAutoLogin = request.getParameter("chk_auto_login");
