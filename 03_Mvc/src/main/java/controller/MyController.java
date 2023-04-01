@@ -26,22 +26,20 @@ public class MyController extends HttpServlet {
 		// 요청인코딩 & 응답인코딩 (모든 서비스들이 인코딩없이 곧바로 파라미터를 꺼내서 사용할 수 있도록 여기서 인코딩 해준다.)
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-	
+		
 		// URLMapping 확인(/today.do, /age.do)
 		String requestURI = request.getRequestURI();  					/* 현재 /03_Mvc/today.do */
 		// 주소 전체를 의미.
 		String contextPath = request.getContextPath(); 					/* /03_Mvc */
 		String urlMapping = requestURI.substring(contextPath.length()); /* /today.do */
 		
-		
 		// ActionForward 객체 선언하기
 		ActionForward actionForward = null;
 		
-		
-		
+	
 		// MyService 인터페이스 타입의 myService 객체 선언하기
 		MyService myService = null; // 처음 선언은 널값으로
-		
+
 		// URLMapping에 따른 모델(서비스) 생성하기
 		
 		/*
@@ -65,6 +63,8 @@ public class MyController extends HttpServlet {
 			break;
 		}
 		
+		
+		
 		// 모델(서비스) 실행하기
 		if(myService != null) {
 			actionForward = myService.execute(request, response);			
@@ -77,12 +77,9 @@ public class MyController extends HttpServlet {
 			}
 			else {
 				request.getRequestDispatcher(actionForward.getPath()).forward(request, response);
-				
 			}
 			
 		}
-		
-		
 		
 	}
 
