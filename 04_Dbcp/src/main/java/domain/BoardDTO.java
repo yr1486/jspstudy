@@ -20,7 +20,7 @@ import lombok.Setter;
 
 
 //1.
-public class BoardDTO {
+public class BoardDTO { // 하나의 게시글
 	
 	private int board_no;
 	private String title;
