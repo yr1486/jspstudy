@@ -17,12 +17,12 @@
 	<form action="${contextPath}/age.do">
 		<select name="birthyear">
 			<c:forEach var="y" begin="1923" end="2023" step="1">
-			<option value="${y}">${y}년</option>
+				<option value="${y}">${y}년</option>
 			</c:forEach>
 		</select>
 		<button>몇 살입니까?</button>
 	</form>
-	
+
 	<div>
 		<input type="text" id="height" placeholder="키(cm)를 입력하세요">
 		<input type="text" id="weight" placeholder="몸무게(kg)를 입력하세요">
