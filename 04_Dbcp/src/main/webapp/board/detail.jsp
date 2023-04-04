@@ -41,24 +41,24 @@
 <body>
 
 	<div>
-		<h1>게시글 작성</h1>
-		<form id="frm_write" method="post" action="${contextPath}/addBoard.do">
+		<h1>게시글 상세보기</h1>
+		<form method="post" action="${contextPath}/modifyBoard.do">
+			<div>수정일<fmt:formatDate value="${board.modified_date}" pattern="yy.MM.dd HH:mm:ss" /></div>
 			<div>
 				<label for="title">제목</label>
-				<input type="text" id="title" name="title">
+				<input type="text" id="title" name="title" value="${board.title}">
 			</div>
 			<div>
-				<textarea name="content" rows="5" cols="30" placeholder="내용"></textarea>
+				<textarea name="content" rows="5" cols="30" placeholder="내용">${board.content}</textarea>
 			</div>
 			<div>
-				<button>작성완료</button>
-				<input type="reset" value="다시작성">
+				<input type="hidden" name="board_no" value="${board.board_no}">
+				<button>수정하기</button>
 				<input type="button" value="목록" id="btn_list">
 			</div>
+
 		</form>
 	</div>
-
-
 
 </body>
 </html>

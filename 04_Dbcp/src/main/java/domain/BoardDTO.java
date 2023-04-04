@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 // 도메인은 '빈'을 모아 두는 곳.
 // 클래스 명이 board , boardVO, boardDTO 등
@@ -16,6 +17,7 @@ import lombok.Setter;
 @AllArgsConstructor // generate Constructor using filed 임
 @Getter
 @Setter
+@ToString
 
 
 
