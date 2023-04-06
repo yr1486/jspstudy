@@ -18,12 +18,18 @@ public class BoardDAO {
 	
 	// 모든 메소드가 사용할 공통 필드
 	private Connection con; //필드는 기본적으로 널값을 가지고 있음
+	// 오라클 데이터베이스와 연결할떄 필요한 애
+	// 디티오와 디에이오까지는 값이 전달이 됐는데. 디비까지 전달이 되려면 필요한 애들.
 	private PreparedStatement ps;
+	// 자바에서 쿼리문을 작성해서 실행할수있도록 도와주는 인터페이스임!!!!! jdbc dbcp할떄 꼭 필요한 객체
 	private ResultSet rs;
 	private String sql;
 	
+	
+	
 	// Connection 관리를 위한 DataSource 필드
 	private DataSource dataSource;
+	
 	
 	// Singleton Pattern 으로 DAO 생성하기
 	private static BoardDAO dao = new BoardDAO();
@@ -138,7 +144,7 @@ public class BoardDAO {
 			sql = "SELECT BOARD_NO, TITLE, CONTENT, MODIFIED_DATE, CREATED_DATE FROM BOARD WHERE BOARD_NO = ?";
 			
 			// 4. 쿼리문을 실행할 PreparedStatement 객체 생성
-			ps = con.prepareStatement(sql);
+			ps = con.prepareStatement(sql); // 쿼리문을 실행할 애를 저장.
 			
 			// 5. 쿼리문에 변수 값 전달하기
 			ps.setInt(1, board_no);   // 1번째 물음표(?)에 board_no 전달하기
@@ -179,6 +185,7 @@ public class BoardDAO {
 		
 		// 1. 삽입 결과 변수 선언
 		int insertResult = 0;
+		// 이 삽입결과가 보드에드서비스로 감.
 		
 		try {
 			
@@ -197,6 +204,10 @@ public class BoardDAO {
 			
 			// 6. PreparedStatement 객체를 이용해 쿼리문 실행(INSERT문 실행은 executeUpdate 메소드로 한다.)
 			insertResult = ps.executeUpdate();
+			//                실제로 쿼리문을 실행하는 애. 셀렉트문을 제외한 인설트딜리트업데이트는 익스큐트업데이트를 사용한다.
+			// 최종적으로 ps에 비조화이팅!이 저장되어있음
+			// 그래서 최종적으로 ?표에 b조 화이팅이 들어가게 됨
+			
 			
 		} catch(Exception e) {
 			e.printStackTrace();

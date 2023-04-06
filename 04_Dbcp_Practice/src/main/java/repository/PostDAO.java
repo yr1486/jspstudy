@@ -86,11 +86,57 @@ public class PostDAO {
 	}
 	
 	
+	// 상세보기
+	public PostVO getPostByNo(int post_no) throws Exception {
+		PostVO post = null;
+		con = dataSource.getConnection();
+		sql =  "SELECT POST_NO, WRITER, TITLE, CONTENT, IP, MODIFIED_DATE, CREATED_DATE";
+		sql += " FROM POST";
+		sql += " WHERE POST_NO = ?";
+		ps = con.prepareStatement(sql);
+		ps.setInt(1, post_no);
+		rs = ps.executeQuery();
+		if(rs.next()) {
+			post = PostVO.builder()
+					.post_no(post_no)
+					.writer(rs.getString(2))
+					.title(rs.getString(3))
+					.content(rs.getString(4))
+					.ip(rs.getString(5))
+					.modified_date(rs.getDate(6))
+					.created_date(rs.getDate(7))
+					.build();
+		}
+		close();
+		return post;
+	}
+	
+	// 수정
+	public int updatePost(PostVO post) throws Exception {
+		con = dataSource.getConnection();
+		sql =  "UPDATE POST";
+		sql += "   SET TITLE = ?, CONTENT = ?, MODIFIED_DATE = SYSDATE";
+		sql += " WHERE POST_NO = ?";
+		ps = con.prepareStatement(sql);
+		ps.setString(1, post.getTitle());
+		ps.setString(2, post.getContent());
+		ps.setInt(3, post.getPost_no());
+		int updateResult = ps.executeUpdate();
+		close();
+		return updateResult;
+	}
 	
 	
-	
-	
-	
+	// 삭제
+	public int deletePost(int post_no) throws Exception {
+		con = dataSource.getConnection();
+		sql = "DELETE FROM POST WHERE POST_NO = ?";
+		ps = con.prepareStatement(sql);
+		ps.setInt(1, post_no);
+		int deleteResult = ps.executeUpdate();
+		close();
+		return deleteResult;
+	}
 	
 	
 	

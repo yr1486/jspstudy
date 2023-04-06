@@ -17,6 +17,7 @@ public class BoardModifyService implements IBoardService {
 		String content = request.getParameter("content");
 		String strBoard_no = request.getParameter("board_no");
 		int board_no = Integer.parseInt(strBoard_no.isEmpty() ? "0" : strBoard_no);
+		// 값이 없으면 0
 		
 		// 2. 요청 파라미터를 이용해서 BoardDTO board 객체 생성
 		BoardDTO board = new BoardDTO();

@@ -33,7 +33,7 @@ public class BoardController extends HttpServlet {
 		String requestURI = request.getRequestURI(); 						/*  /04_Dbcp/getAllBoardList.do	*/ 
 		String contextPath = request.getContextPath();						/*	/04_Dbcp					*/
 		String urlMapping = requestURI.substring(contextPath.length()); 	/*  /getAllBoardList.do			*/ // 8임.
-		
+										// 잘라낸다.
 		// 모든 서비스의 공통 타입 선언
 		// 모든 서비스는 IBoardService 타입으로 선언할 수 있다.
 		IBoardService service = null;
