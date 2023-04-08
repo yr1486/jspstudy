@@ -6,7 +6,7 @@
 <mapper namespace="mybatis.mapper.member">
 
 	<!-- 목록   // resultType=alias 별명을 적은거임  결국 도메인의 멤버이긴하지만, 별명쓴거임. // 별명쓰지않고. domain.Member해도됨-->
-	<select id="selectAllMembers" databaseId="Member">
+	<select id="selectAllMembers" resultType="Member">
 		SELECT MEMBER_NO, ID, NAME, GENDER, ADDRESS
 		  FROM MEMBER
 		 ORDER BY MEMBER_NO DESC
@@ -24,6 +24,8 @@
 		  FROM MEMBER
 		 WHERE MEMBER_NO = #{memberNo}
 	</select>
+	
+	
 	
 	<!-- 삽입 -->
 	<insert id="insertMember" parameterType="Member">
