@@ -37,11 +37,11 @@
 			</div>
 
 			<div>
-				<input type="hidden" id="memberNo" name="memberNo"> <input
-					type="button" value="초기화" onclick="fnInit()"> <input
-					type="button" value="신규등록" onclick="fnAddMember()"> <input
-					type="button" value="변경저장" onclick="fnModifyMember()"> <input
-					type="button" value="삭제" onclick="fnRemoveMember()">
+				<input type="hidden" id="memberNo" name="memberNo"> 
+				<input type="button" value="초기화" onclick="fnInit()"> 
+				<input type="button" value="신규등록" onclick="fnAddMember()"> 
+				<input type="button" value="변경저장" onclick="fnModifyMember()"> 
+				<input type="button" value="삭제" onclick="fnRemoveMember()">
 			</div>
 		</form>
 

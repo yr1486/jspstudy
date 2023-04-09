@@ -15,6 +15,10 @@ public class MemberRemoveService implements IMemberService {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		// 요청 파라미터(삭제해야 할 회원 번호)
+		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
+		
+		int deleteResult = MemberDAO.getInstance();
 		Member member = new Member();
 		member.setMemberNo(Integer.parseInt(request.getParameter("memberNo")));
 		
@@ -51,7 +55,7 @@ public class MemberRemoveService implements IMemberService {
 				// 메세지와 응답코드 모두 jqXHR로 간다.
 			}
 
-		}
+		
 	}
 
 }
