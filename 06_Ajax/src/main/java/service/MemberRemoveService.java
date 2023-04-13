@@ -18,16 +18,17 @@ public class MemberRemoveService implements IMemberService {
 		// 요청 파라미터(삭제해야 할 회원 번호)
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 		
-		int deleteResult = MemberDAO.getInstance();
-		Member member = new Member();
-		member.setMemberNo(Integer.parseInt(request.getParameter("memberNo")));
+		// int memberNo 객체의 정보를 이용해 DB의 내용을 삭제
+		int deleteResult = MemberDAO.getInstance().deleteMember(memberNo);
+		
+		response.setContentType("application/json; charset=UTF-8");	
+
 		
 		
 		try {
 			
 			int deleteResult = MemberDAO.getInstance().insertMember(member);
 			
-			response.setContentType("application/json; charset=UTF-8");	
 			
 			JSONObject obj = new JSONObject();
 			obj.put("deleteResult", deleteResult); // 1아니면 0

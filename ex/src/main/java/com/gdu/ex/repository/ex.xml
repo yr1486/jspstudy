@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <!--맵퍼가 있는 패키지 먼저 적기.
+  별명은 맵퍼에서만  -->
+<!-- 
+	namespace는 mapper가 있는 패키지와 mapper 이름으로 만든다.
+ -->
+ 
+ <!-- 
+ 맵퍼 작업의 1번은 네임스페이스 잡는다.
+ 네임스페이스는 어떻게 적냐: 레파지토리에 있는.ex로 들어가있다.
+ 네임스페이스를 만들때는 맵퍼의 위치보고 만드는건데 . 맵퍼의 위치는 자유롭다!!!!! 레파지토리에 갈수도있고, 디티오에 갈수도 있고 등등
+ 
+ resultType: 셀렉트의 리절트 타입이 뭐니 ,
+ 쿼리문의 행의 결과를 리절트 타입의 저장하시오. 라는뜻.
+ 리절트 타입 com.gdu.ex.domain.ExDto 원래 이건데. 별명 등록해서 Ex가 됨!!!
+ mybatis-config.xml에서 별명할수있는 엘리어스 떄문에 가능!! 거기에 설정해줘서 Ex가 된거임
+ 
+ 태그안에 있는 <셀렉트 ~ 와 리절트타입은 짝꿍임. 리절트타입을 적어주는건 셀렉트밖에 없다.
+ -->
+ 
+ <!-- 매퍼에 네임스페이스.경로 적어주는거는. 맵퍼네임스페이스가 여러개일수 있어.
+ 그래서. 셀렉트 아이디="list"보고 그담 네임스페이스.로 찾을 수있어 -->
+ 
+		 <!-- 
+		 WHERE EX_CONTENT = 1 : 결과 여러 개
+		  WHERE EX_NO = 1 	  : 결과 1개 (EX_NO가 기본키이므로 중복된 값이 없다) 기본키 가지고 얘기하는거
+		-->
+<mapper namespace="com.gdu.ex.repository.ex">
+
+	<select id="list" resultType="Ex">
+		SELECT EX_NO, EX_CONTENT, EX_CREATED_AT
+		  FROM EX
+	</select>
+	
+	<select id="detail" parameterType="int" resultType="Ex">
+		SELECT EX_NO, EX_CONTENT, EX_CREATED_AT
+		  FROM EX
+		 WHERE EX_NO = #{exNo}
+	</select>
+	
+	<insert id="save" parameterType="Ex">
+		INSERT INTO EX
+		VALUES(EX_SEQ.NEXTVAL, #{exContent}, SYSTIMESTAMP)
+	</insert>
+	
+	<delete id="remove" parameterType="int">
+		DELETE
+		  FROM EX
+		 WHERE EX_NO = #{exNo}
+	</delete>
+
+
+</mapper>
+<!-- 
+파라미터는 다오가 매퍼한테 주는거
+저 인설트 쿼리문에 파라미터 타입을 스트링도 되고 exDto도 된다 (객체도 된다) 하나만 저장하지 안으니까. 객체를 쓰는게 일반적임
+	파라미터타입에는 엘리셔스 별명으로 Ex쓴거야
+ 	인설트딜리트 업데이트 타입에는 리절트타입을 못적게 되어있음!!!!!! 왜냐 어차피실행하면 인트니까요-->
+
+
+
+

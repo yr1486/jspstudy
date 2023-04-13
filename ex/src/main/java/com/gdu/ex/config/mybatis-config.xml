@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+	
+	<!-- settings -->
+	<!-- 언더스코어:밑줄, 밑줄을 카멜케이스로 바꿔주는 애, 그래서 Dto에서 카멜로 쓸수 있는거임 -->
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	
+	<!-- typeAliases : 별명 , 타이핑을 줄이기 위해서 쓰임. 옵션같은거. 안해도 되는 세팅 -->
+	<typeAliases>
+	  	<typeAlias alias="Ex" type="com.gdu.ex.domain.ExDto"/>
+	</typeAliases>
+	
+	<!-- 환경 설정 -->
+	<!-- 데이터베이스 접속에 필요한 정보는 DAO가 가지고 있어야한다. dao:데이터베이스 액세스 오브젝트니까.
+	다오의 자리는 일반적으로 레파지토리-->
+	<!-- 데이터소스는 dbcp와 연관있음. 커넥션을 여러개 만들어서 관리하겠다. -->
+	<environments default="development">
+		<environment id="development">
+      		<transactionManager type="JDBC"/>
+      		<dataSource type="POOLED">
+        		<property name="driver" value="oracle.jdbc.OracleDriver"/>
+        		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+        		<property name="username" value="GDJ61"/>
+        		<property name="password" value="1111"/>
+      		</dataSource>
+    	</environment>
+  	</environments>
+  
+  	<!-- mapper 경로 설정하기 : 어디다 둘건지 설정하는거.  항상 패키지 부터 적는거임. 점(.)대신 슬래쉬(/)를 쓰는 거임 -->
+ 	<mappers>
+		<mapper resource="com/gdu/ex/repository/ex.xml"/>
+	</mappers>
+	
+	<!-- 일단. resource가 들어가면 점 대신 슬래시를 써주기 
+			type이 들어갈땐 자바의? 시선이라서. 점으로 가고.-->
+	
+	
+	<!-- 코드를 외우기 보다. 이 컨피그 파일을 거의 복사해서 쓰는데
+	어디를 수정하는지를 알아야함. 그리고 그 수정한게 뭘.한다 는것만 잘 알아두기 -->
+
+	
+</configuration>
+
+
+
+
+
+
+
+
